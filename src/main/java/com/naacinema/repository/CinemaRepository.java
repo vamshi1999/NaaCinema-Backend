@@ -14,5 +14,7 @@ public interface CinemaRepository extends JpaRepository<Cinema, Long>{
 
 	List<Cinema> findByOrderByRatingDesc();
 	
+	List<Cinema> findByOrderByRatingAsc();
+	
 	List<Cinema> findByGenre(String genre);
 }

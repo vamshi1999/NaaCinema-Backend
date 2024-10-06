@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +24,7 @@ import com.naacinema.service.CinemaService;
 
 @RestController
 @RequestMapping("/naacinema")
+@CrossOrigin(origins = "*")
 public class CinemaController {
 
 	@Autowired
@@ -73,7 +75,14 @@ public class CinemaController {
 	
 	@GetMapping("/cinema/sort-by-rating-desc")
 	public ResponseEntity<List<Cinema>> sortCinemabyRatingDesc(){
-		List<Cinema> list=this.cinemaService.sortCinemaByRating();
+		List<Cinema> list=this.cinemaService.sortCinemaByRatingDesc();
+		
+		return new ResponseEntity<>(list,HttpStatus.OK);
+	}
+	
+	@GetMapping("/cinema/sort-by-rating-asc")
+	public ResponseEntity<List<Cinema>> sortCinemabyRatingAsc(){
+		List<Cinema> list=this.cinemaService.sortCinemaByRatingAsc();
 		
 		return new ResponseEntity<>(list,HttpStatus.OK);
 	}

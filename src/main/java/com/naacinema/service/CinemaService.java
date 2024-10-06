@@ -16,6 +16,7 @@ public interface CinemaService {
 	Cinema getCinemaById(Long id);
 	List<Cinema> getCinemaByName(String cinemaName);
 	List<Cinema> getCinemaByGenre(String genre);
-	List<Cinema> sortCinemaByRating();
+	List<Cinema> sortCinemaByRatingDesc();
+	List<Cinema> sortCinemaByRatingAsc();
 	String deleteCinema(Long id);
 }

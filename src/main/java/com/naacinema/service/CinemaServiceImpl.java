@@ -25,7 +25,7 @@ public class CinemaServiceImpl implements CinemaService{
 	@Autowired
 	private CinemaRepository cineRepo;
 	
-	private final List<String> allowedImageFormats = Arrays.asList(".jpg", ".jpeg", ".png", ".gif");
+	private final List<String> allowedImageFormats = Arrays.asList(".jpg", ".jpeg", ".png");
 	
 	@Value("${spring.servlet.multipart.location}")
 	private String fileUploadPath;
@@ -114,8 +114,14 @@ public class CinemaServiceImpl implements CinemaService{
 	}
 
 	@Override
-	public List<Cinema> sortCinemaByRating() {
+	public List<Cinema> sortCinemaByRatingDesc() {
 		List<Cinema> list=this.cineRepo.findByOrderByRatingDesc();
+		return list;
+	}
+	
+	@Override
+	public List<Cinema> sortCinemaByRatingAsc() {
+		List<Cinema> list=this.cineRepo.findByOrderByRatingAsc();
 		return list;
 	}
 
